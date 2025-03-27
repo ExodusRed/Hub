@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class Menu(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller, style):
         super().__init__()
         self.create_widgets()
 

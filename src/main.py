@@ -1,15 +1,15 @@
 from model.main_model import MainModel
-
 from controller.main_controller import MainController
-
 from view.menu_view import Menu
 from view.settings_view import Settings
+
+from style import Style
 
 import tkinter as tk
 
 
 class Hub(tk.Tk):
-    def __init__(self):
+    def __init__(self, style):
         super().__init__()
         self.title("Hub")
         self.geometry("640x480")
@@ -24,9 +24,9 @@ class Hub(tk.Tk):
         self.frames = {}
 
         for F in (Menu, Settings):
-            frame = F(self.container, self)
+            frame = F(self.container, self, style)
             self.frames[F] = frame
-            frame.grid(sticky="nsew")
+            frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(Menu)
 
@@ -40,6 +40,7 @@ class Hub(tk.Tk):
 
 
 if __name__ == "__main__":
-    hub = Hub()
+    style = Style(bg="grey12", fg="white", font="Lucida Console", font_size=18)
+    hub = Hub(style)
     hub.mainloop()
 
